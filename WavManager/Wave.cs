@@ -175,6 +175,7 @@ namespace SASR
                 data.Add((short)(y * MaxAmplidute));
                 cns.ForEach(cn => channels.RemoveAll(c => c.ChannelID == cn));
             }
+            (new ChannelManager()).ResetChannels(channels, timeFrame);
         }
 
         public List<short> ParseFile(string path,float timeFrame)
