@@ -170,9 +170,9 @@ namespace SASR
                     {
                         y += this.GetYFrom(t - w.Offset * FS, w, sampleRate);
                     }
-
+                    
                 }
-                data.Add((short)(y * MaxAmplidute));
+                data.Add((short)(y));
                 cns.ForEach(cn => channels.RemoveAll(c => c.ChannelID == cn));
             }
             (new ChannelManager()).ResetChannels(channels, timeFrame);

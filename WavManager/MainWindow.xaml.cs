@@ -23,10 +23,11 @@ namespace WavManager
         public MainWindow()
         {
             InitializeComponent();
-            string wavPath = "D:\\vs-workspace\\MyWaveTest\\Test\\speech.wav";
-            string txtPath = "D:\\vs-workspace\\MyWaveTest\\Test\\speech.txt";
+            string basePath = string.Empty;//AppDomain.CurrentDomain.BaseDirectory;
+            string wavPath = basePath + ".\\Test\\speech.wav";
+            string txtPath = basePath + ".\\Test\\speech.txt";
             DataGenerator dg = new DataGenerator();
-            dg.WriteData(wavPath, dg.ParseFile(txtPath, 1));
+            dg.WriteData(wavPath, dg.ParseFile(txtPath, 2));
             MessageBox.Show("Wave File created!");
         }
     }
