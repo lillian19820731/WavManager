@@ -93,9 +93,21 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Test\pinyin-lillian.pkf" />
+    <None Include="Test\speech.pkf" />
+    <None Include="Test\test.pkf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Test\pinyin-lillian.wav" />
+    <Resource Include="Test\song.txt" />
+    <Resource Include="Test\speech.txt" />
+    <Content Include="Test\speech.wav" />
+    <Content Include="Test\speech1.wav" />
+    <Resource Include="Test\speech_b.txt" />
+    <Content Include="Test\test.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
