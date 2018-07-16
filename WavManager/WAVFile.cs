@@ -552,7 +552,7 @@ namespace SASR
                 {
                     byte b0 = (byte)(Sample[i] & 0xff);
                     byte b1 = (byte)((Sample[i] >> 8) & 0xff);
-                    if (BitConverter.IsLittleEndian)
+                    if (!BitConverter.IsLittleEndian)
                     {
                         Stream.WriteByte(b1);
                         Stream.WriteByte(b0);
@@ -626,7 +626,7 @@ namespace SASR
             {
                 byte b0 = (byte)(Sample & 0xff);
                 byte b1 = (byte)((Sample >> 8) & 0xff);
-                if (BitConverter.IsLittleEndian)
+                if (!BitConverter.IsLittleEndian)
                 {
                     Stream.WriteByte(b1);
                     Stream.WriteByte(b0);
