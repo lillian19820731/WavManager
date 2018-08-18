@@ -6,7 +6,7 @@
     {
         public byte NumChannels { get; set; }
 
-        public bool IsStereo => (NumChannels == 2);
+        public bool IsStereo{get{return (NumChannels == 2);}}
 
         public int SampleRateHz { get; set; }
 
@@ -26,17 +26,27 @@
         }
 
         public static bool operator ==(WAVFormat f1, WAVFormat f2)
-            => ((f1.NumChannels == f2.NumChannels) &&
+        {
+            return ((f1.NumChannels == f2.NumChannels) &&
                    (f1.SampleRateHz == f2.SampleRateHz) &&
                    (f1.BitsPerSample == f2.BitsPerSample));
+        }
 
         public static bool operator !=(WAVFormat f1, WAVFormat f2)
-            => ((f1.NumChannels != f2.NumChannels) ||
+        {
+            return ((f1.NumChannels != f2.NumChannels) ||
                    (f1.SampleRateHz != f2.SampleRateHz) ||
                    (f1.BitsPerSample != f2.BitsPerSample));
+        }
 
-        public override bool Equals(object obj) => (obj is WAVFormat format) && (this == format);
+        public override bool Equals(object obj)
+        {
+            return (obj is WAVFormat WAVFormat)  && (this == WAVFormat);
+        }
 
-        public override int GetHashCode() => base.GetHashCode() ^ this.NumChannels ^ this.SampleRateHz ^ this.BitsPerSample;
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() ^ this.NumChannels ^ this.SampleRateHz ^ this.BitsPerSample;
+        }
     }
 }

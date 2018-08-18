@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SASR.WaveFormAnalizer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SASR"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" Name="Main" d:DesignWidth="1200" Height="500">
+    <Grid  Name="PicArea" Height="{Binding Source=Main,Path=Height}" Width="{Binding Source=Main,Path=Width}"  ClipToBounds="True" MaxHeight=" 500">
+        <Canvas Name="Y_Axis" Width="40" Height="{Binding Source=Main,Path=Height}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Canvas  Name="Draw" Background="Black" Height="{Binding Source=Main,Path=Height}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top" ClipToBounds="True" />
+    </Grid>
+</UserControl>

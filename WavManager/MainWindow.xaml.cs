@@ -12,8 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SASR;
-namespace WavManager
+namespace SASR
 {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
@@ -23,12 +22,20 @@ namespace WavManager
         public MainWindow()
         {
             InitializeComponent();
-            string basePath = string.Empty;//AppDomain.CurrentDomain.BaseDirectory;
-            string wavPath = basePath + ".\\Test\\speech.wav";
-            string txtPath = basePath + ".\\Test\\speech.txt";
-            DataGenerator dg = new DataGenerator();
-            dg.WriteData(wavPath, dg.ParseFile(txtPath, 2));
-            MessageBox.Show("Wave File created!");
+            WaveData waveData = new WaveData(".\\Test\\pinyin-lillian.wav");
+            WaveFormDisplayer.SourceData = waveData.Data;
+
+            //WaveFormDisplayer.SourceData = data.Data;
+
+            //string txtPath = basePath + ".\\Test\\speech.txt";
+            ////DataGenerator dg = new DataGenerator();
+            //dg.WriteData(wavPath, dg.ParseFile(txtPath, 2));
+            //MessageBox.Show("Wave File created!");
+            //WaveFormDisplayerControl c = new WaveFormDisplayerControl();
+            //this.WaveFormDisplayer.Children.Add(c);
+            //MessageBox.Show("end");
+
+
         }
     }
 }

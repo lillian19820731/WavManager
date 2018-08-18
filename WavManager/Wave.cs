@@ -15,7 +15,14 @@ namespace SASR
         public float Duration = 0.0f;
         public float Amplitude = 0.0f;
         public float Phase = 0.0f;
-        public float Ending => Offset + Duration;
+        private float ending;
+
+        public float Ending
+        {
+          get { return ending; }
+          set { ending = Offset + Duration; }
+        }
+
 
 
         public Wave(float offset, float duration, float frequency, float amplitude)
@@ -28,6 +35,28 @@ namespace SASR
 
     }
 
+    public class WaveData
+    {
+        public List<short> Data;
+        public short Min;
+        public short Max;
+        public WaveData(string path)
+        {
+            WAVReader reader = new WAVReader();
+            Data = reader.ReadWAVFile(path);
+            Max = Data.Max();
+            Min = Data.Min();
+        }
+        public List<short> Filter(int skipOffset)
+        {
+            List<short> fData = new List<short>();
+            for (int i = 0; i < Data.Count; i += skipOffset)
+            {
+                fData.Add(fData[i]);
+            }
+            return fData;
+        }
+    }
 
     public class Channel
     {
@@ -245,8 +274,28 @@ namespace SASR
             }
         }
 
-        float FloatParse(string s) => float.TryParse(s, out var f) ? f : 0.0f;
-        int IntParse(string s) => int.TryParse(s, out var f) ? f : -1;
+        //float FloatParse(string s) => float.TryParse(s, out var f) ? f : 0.0f;
+        //int IntParse(string s) => int.TryParse(s, out var f) ? f : -1;
+                public float FloatParse(string s)
+                { 
+                    float f;
+                    if(!float.TryParse(s,out f))
+                    {
+                     f =0.0f;
+                    }
+                    return f;
+                }
+                public int IntParse(string s)
+                {
+                    int f;
+                    if (!int.TryParse(s, out f))
+                    {
+                        f = -1;
+                    }
+                    return f;
+                }
+ 
+
         public Dictionary<int,float> GenerateTones(float baseTone,int count)
         {
             Dictionary<int, float> tones = new Dictionary<int, float>();

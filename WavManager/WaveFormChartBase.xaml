@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="SASR.WaveFormChartBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SASR"
+             xmlns:system ="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="70"  d:DesignWidth="1020" Name="Main"  HorizontalAlignment="Stretch"  Margin="10,10,10,10" ClipToBounds="true" Background="White" FontSize="20">
+    <Grid  Name="WaveFormArea" Height="50" MaxHeight="50" MinHeight="50" Width="{Binding Source=Main,Path=Width}"  ClipToBounds="True" >
+        <Canvas Name="DrawLineAndPoint" Background="Black" Canvas.Left="0" Canvas.Top="0" Width="{Binding ElementName=WaveFormArea,Path=Width}" Height="{Binding ElementName=DrawLineAndPoint,Path=Height}" >
+            <!--<Canvas  Name="LeftDrag" Background="DarkGreen" Opacity="0.2"  ClipToBounds="True" Width="5" Height="{Binding ElementName=WaveFormArea,Path=Height}" MouseDown ="LeftDrag_MouseDown" MouseMove="LeftDrag_MouseMove" MouseUp="LeftDrag_MouseUp" MouseEnter="LeftDrag_MouseEnter" MouseLeave="LeftDrag_MouseLeave"/>-->
+            <!--<Rectangle Name="ResizableRect" Opacity="0.2" Fill="Green"  Width="50" Height="50" Canvas.Left="0" Canvas.Top="0"></Rectangle>-->
+            <Rectangle  Name="ResizableRect" Opacity="0.5" Fill="Yellow"  Width="50" Height="50" Canvas.Left="0" Canvas.Top="0" SizeChanged="ResizableRect_SizeChanged">
+                </Rectangle>
+            <!--<Canvas  Name="Drag" Background="Green" Opacity="0.2"  ClipToBounds="True" Width="60" Height="{Binding ElementName=WaveFormArea,Path=Height}" RenderTransformOrigin="0.232,0.474"/>-->
+            <!--<Canvas  Name="RightDrag" Canvas.Left="45" Background="DarkGreen" Opacity="0.2"  ClipToBounds="True" Width="5" Height="{Binding ElementName=WaveFormArea,Path=Height}" MouseDown="RightDrag_MouseDown" MouseMove="RightDrag_MouseMove" MouseUp="RightDrag_MouseUp" MouseEnter="RightDrag_MouseEnter" MouseLeave="RightDrag_MouseLeave"/>-->
+        </Canvas>
+        <Border  BorderBrush="Red" BorderThickness="1" Margin="0,0,0,0"/>
+    </Grid>
+</UserControl>

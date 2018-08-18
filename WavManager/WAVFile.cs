@@ -32,7 +32,7 @@ namespace SASR
         /// <summary>
         /// Gets the WAV file header as read from the file, as a String object
         /// </summary>
-        public string WAVHeaderString => new string(WAVHeader);
+        public string WAVHeaderString{get {return  new string(WAVHeader);}}// => new string(WAVHeader);
 
         /// <summary>
         /// Gets the RIFF type as read from the file (array of chars)
@@ -42,7 +42,8 @@ namespace SASR
         /// <summary>
         /// Gets the RIFF type as read from the file, as a String object
         /// </summary>
-        public string RIFFTypeString => new string(RIFFType);
+        //public string RIFFTypeString => new string(RIFFType);
+                public string RIFFTypeString{get{ return new string(RIFFType);}}
 
         /// <summary>
         /// Gets the audio file's number of channels
@@ -52,7 +53,8 @@ namespace SASR
         /// <summary>
         /// Gets whether or not the file is stereo.
         /// </summary>
-        public bool IsStereo => (NumChannels == 2);
+        //public bool IsStereo => (NumChannels == 2);
+        public bool IsStereo{get{return (NumChannels == 2);}}
 
         /// <summary>
         /// Gets the audio file's sample rate (in Hz)
@@ -83,13 +85,13 @@ namespace SASR
         /// <summary>
         /// Gets the file size (in bytes).  This is read from a field in the WAV file header.
         /// </summary>
-        public long FileSizeBytes => Stream.Length;
+        public long FileSizeBytes{get{return Stream.Length;}}
 
         /// <summary>
         /// Gets the number of audio samples in the WAV file.  This is calculated based on
         /// the data size read from the file and the number of bits per sample.
         /// </summary>
-        public int NumSamples => (DataSizeBytes / (int)(BitsPerSample / 8));
+        public int NumSamples{get{return  (DataSizeBytes / (int)(BitsPerSample / 8));}} 
 
         /// <summary>
         /// Gets the number of samples remaining (when in read mode).
@@ -129,12 +131,18 @@ namespace SASR
         /// <summary>
         /// WAVFile class: Default constructor
         /// </summary>
-        public WAVFile() => InitMembers();
+        public WAVFile()
+        {
+            InitMembers();
+        }
 
         /// <summary>
         /// Destructor - Makes sure the file is closed.
         /// </summary>
-        ~WAVFile() => this.Close();
+        ~WAVFile()
+        {
+            this.Close();
+        }
 
         public void Dispose()
         { this.Close(); }

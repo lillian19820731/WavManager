@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="AutoChart.MyChart"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AutoChart"
+             xmlns:system ="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White" FontSize="20" Name="Main">
+    <Grid>
+        <TextBlock Name="Title" Text="{Binding ElementName=Main,Path=ChartTitle}"  FontSize="{Binding ElementName=Main,Path=FontSize}" FontFamily="{Binding ElementName=Main,Path=FontFamily}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"></TextBlock>
+        <TextBlock Name="X_Title" Text="{Binding ElementName=Main,Path=XAxisTitle}" FontFamily="{Binding ElementName=Main,Path=FontFamily}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10"  FontSize="15"></TextBlock>
+        <TextBlock Name="Y_Title" Text="{Binding ElementName=Main,Path=YAxisTitle}" FontFamily="{Binding ElementName=Main,Path=FontFamily}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="15" TextWrapping="Wrap" Width="18"></TextBlock>
+        <Grid Margin="33,35,10,34" Name="PicAre" ClipToBounds="True">
+            <!--<Border Width="{Binding ElementName=PicAre,Path=Width}" Height="{Binding ElementName=PicAre,Path=Height}" BorderBrush="Blue" BorderThickness="4"></Border>-->
+            <Canvas Name="X_Axis" Height="40" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="{Binding ElementName=PicAre,Path=ActualWidth}">
+                <Line Stroke="Black" StrokeThickness="3"   StrokeStartLineCap="Round" X1="0" Y1="5" X2="{Binding ElementName=X_Axis,Path=Width}" Y2="5" Width="{Binding ElementName=PicAre,Path=ActualWidth}" Height="10" ></Line>
+            </Canvas>
+            <Canvas Width="40" Name="Y_Axis" Height="{Binding ElementName=PicAre,Path=ActualHeight}" Margin="0,0,0,0" HorizontalAlignment="Left">
+                <Line Canvas.Left="30" Stroke="Black" StrokeThickness="3"  StrokeStartLineCap="Round" X1="5" Y1="{Binding ElementName=Y_Axis,Path=Height}" X2="5" Y2="0" Height="{Binding ElementName=PicAre,Path=ActualHeight}" Width="10" Fill="Black">
+                </Line>
+            </Canvas>
+            <Canvas  Name="Draw" Margin="34,0,0,34" ClipToBounds="True" MouseDown="DrawLineAndPoint_MouseDown" MouseMove="DrawLineAndPoint_MouseMove" MouseUp="DrawLineAndPoint_MouseUp" MouseEnter="DrawLineAndPoint_MouseEnter" MouseLeave="DrawLineAndPoint_MouseLeave" Background="White" >
+                <Canvas Width="{Binding ElementName=Draw,Path=Width}" Height="{Binding ElementName=Draw,Path=Height}" Name="GridLines" ClipToBounds="True">
+
+                </Canvas>
+
+                <Canvas Canvas.Left="0" Canvas.Bottom="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Name="DrawLineAndPoint" Width="223" Height="197" >
+                    <!--<Border Width="{Binding ElementName=DrawLineAndPoint,Path=Width}" Height="{Binding ElementName=DrawLineAndPoint,Path=Height}" BorderBrush="Blue" BorderThickness="2"></Border>-->
+                </Canvas>
+            </Canvas>
+            <StackPanel Height="auto" Width="auto" VerticalAlignment="Top" HorizontalAlignment="Right" Name="LineTitles" Margin="0,9,10,-9"/>
+        </Grid>
+        <Button Name="Rest" Width="20" Height="20" Margin="7,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFFFE800" Click="Button_Click"/>
+    </Grid>
+</UserControl>

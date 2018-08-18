@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="SASR.WaveFormDisplayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SASR"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="1120" Height="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="260"/>
+            <RowDefinition Height="520"/>
+        </Grid.RowDefinitions>
+        <local:WaveFormChartBase x:Name="WaveFormChartBase" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Height="70" Width="1120"/>
+        <local:WaveFormChart x:Name="WaveFormChart"  Grid.Row="1" Grid.Column="0" Height="240" Width="1120"/>
+        <local:WaveFormAnalizer x:Name="WaveFormAnalizer" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="0" Width="1120" Height="500"/>
+    </Grid>
+</UserControl>
